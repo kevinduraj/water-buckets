@@ -27,7 +27,6 @@ class Buckets {
     this
   }
 
-
   def emptyB(): Buckets = {
     step += 1
     B = 0
@@ -38,8 +37,8 @@ class Buckets {
     step += 1
 
     if ((A + B) > maxB) {
-      A = A - (maxB-B)
-      B += (maxB-B)
+      A = A - (maxB - B)
+      B += (maxB - B)
     } else {
       B = A + B
       A = 0
@@ -51,8 +50,8 @@ class Buckets {
   def fillB2A(): Buckets = {
     step += 1
     if ((B + A) > maxA) {
-      B = B - (maxA-A)
-      A += (maxA-A)
+      B = B - (maxA - A)
+      A += (maxA - A)
     } else {
       A = B
       B = 0
