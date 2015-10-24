@@ -1,6 +1,8 @@
-Keep filling two buckets from source 
-or each other until one will get 4L
-==============================================
+Get 4 Liters into bucket
+========================
+
+###Keep filling two buckets from source or each other until one will get 4L
+
 
 ```
 Water Buckets - Fill Right to Left
