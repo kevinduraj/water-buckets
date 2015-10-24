@@ -1,7 +1,7 @@
 Get 4 Liters into bucket
 ========================
 
-###Keep filling two buckets from source or each other until one will get 4L
+####Keep filling two buckets from source or each other until one will get 4L
 
 
 ```
