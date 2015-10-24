@@ -2,13 +2,13 @@ package kduraj
 
 object Application extends App {
 
-  val maxA   = 9
-  val maxB   = 12
+  val maxA = 9
+  val maxB = 12
   val target = 6
 
-//  println("\nWater Buckets - Fill Right to Left")
-//  println("----------------------------------")
-//  right2Left()
+  println("\nWater Buckets - Fill Right to Left")
+  println("----------------------------------")
+  right2Left()
 
   println("\nWater Buckets - Fill Left to Right")
   println("----------------------------------")
@@ -20,17 +20,24 @@ object Application extends App {
 
     rightBucket.printContent()
 
-    rightBucket.fullB().printContent()
-    rightBucket.fillB2A().printContent()
+    do {
+      rightBucket.fullB().printContent()
+      rightBucket.fillB2A().printContent()
+    } while (rightBucket.A != maxA)
 
     // Keep empty bucket A and move from B to A until B=4
+
     do {
       rightBucket.emptyA().printContent()
       rightBucket.fillB2A().printContent()
-      rightBucket.fullB().printContent()
-      rightBucket.fillB2A().printContent()
+
+      if (rightBucket.B != target) {
+        rightBucket.fullB().printContent()
+        rightBucket.fillB2A().printContent()
+      }
 
     } while (rightBucket.B != target)
+
   }
 
   def left2Right(): Unit = {
@@ -50,7 +57,7 @@ object Application extends App {
       leftBucket.emptyB().printContent()
       leftBucket.fillA2B().printContent()
 
-      if(leftBucket.B != target) {
+      if (leftBucket.B != target) {
         leftBucket.fullA().printContent()
         leftBucket.fillA2B().printContent()
       }
