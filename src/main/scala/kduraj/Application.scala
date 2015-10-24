@@ -16,5 +16,4 @@ object Application extends App {
   val b2 = new Buckets(maxA, maxB, target)
   b2.left2Right()
 
-
 }

@@ -58,7 +58,6 @@ class Buckets(val maxA: Int, val maxB: Int, val target: Int) {
 
   def right2Left(): Unit = {
 
-
     printContent()
 
     do {
@@ -82,7 +81,6 @@ class Buckets(val maxA: Int, val maxB: Int, val target: Int) {
   }
 
   def left2Right(): Unit = {
-
 
     printContent()
 
