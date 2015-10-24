@@ -1,5 +1,5 @@
-Get 4 Liters into bucket
-========================
+Get target quantity into a bucket
+=================================
 
 ####Keep filling two buckets from source or each other until target is reached 
 
