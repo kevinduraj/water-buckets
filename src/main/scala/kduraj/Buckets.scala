@@ -3,42 +3,42 @@ package kduraj
 class Buckets(val maxA: Int, val maxB: Int, val target: Int) {
 
   var step = 0
-  var A = 0
-  var B = 0
+  var bucketA = 0
+  var bucketB = 0
 
   def fullA(): Buckets = {
     step += 1
-    A = maxA
+    bucketA = maxA
     this
   }
 
   def fullB(): Buckets = {
     step += 1
-    B = maxB
+    bucketB = maxB
     this
   }
 
   def emptyA(): Buckets = {
     step += 1
-    A = 0
+    bucketA = 0
     this
   }
 
   def emptyB(): Buckets = {
     step += 1
-    B = 0
+    bucketB = 0
     this
   }
 
   def fillA2B(): Buckets = {
     step += 1
 
-    if ((A + B) > maxB) {
-      A = A - (maxB - B)
-      B += (maxB - B)
+    if ((bucketA + bucketB) > maxB) {
+      bucketA = bucketA - (maxB - bucketB)
+      bucketB += (maxB - bucketB)
     } else {
-      B = A + B
-      A = 0
+      bucketB = bucketA + bucketB
+      bucketA = 0
     }
     this
 
@@ -46,12 +46,12 @@ class Buckets(val maxA: Int, val maxB: Int, val target: Int) {
 
   def fillB2A(): Buckets = {
     step += 1
-    if ((B + A) > maxA) {
-      B = B - (maxA - A)
-      A += (maxA - A)
+    if ((bucketB + bucketA) > maxA) {
+      bucketB = bucketB - (maxA - bucketA)
+      bucketA += (maxA - bucketA)
     } else {
-      A = B
-      B = 0
+      bucketA = bucketB
+      bucketB = 0
     }
     this
   }
@@ -63,7 +63,7 @@ class Buckets(val maxA: Int, val maxB: Int, val target: Int) {
     do {
       fullB().printContent()
       fillB2A().printContent()
-    } while (A != maxA)
+    } while (bucketA != maxA)
 
     // Keep empty bucket A and move from B to A until B=4
 
@@ -71,12 +71,12 @@ class Buckets(val maxA: Int, val maxB: Int, val target: Int) {
       emptyA().printContent()
       fillB2A().printContent()
 
-      if (B != target) {
+      if (bucketB != target) {
         fullB().printContent()
         fillB2A().printContent()
       }
 
-    } while (B != target)
+    } while (bucketB != target)
 
   }
 
@@ -88,24 +88,24 @@ class Buckets(val maxA: Int, val maxB: Int, val target: Int) {
     do {
       fullA().printContent()
       fillA2B().printContent()
-    } while (B != maxB)
+    } while (bucketB != maxB)
 
     // Keep empty bucket B and move from A to B until B=4
     do {
       emptyB().printContent()
       fillA2B().printContent()
 
-      if (B != target) {
+      if (bucketB != target) {
         fullA().printContent()
         fillA2B().printContent()
       }
 
-    } while (B != target)
+    } while (bucketB != target)
 
   }
 
   def printContent(): Unit = {
-    println("Step: " + step + "\t\tA = " + A + "\t\tB = " + B + "\t\t")
+    println("Step: " + step + "\t\tA = " + bucketA + "\t\tB = " + bucketB + "\t\t")
   }
 
 }
