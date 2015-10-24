@@ -1,6 +1,6 @@
 package kduraj
 
-class Buckets(val maxA: Int, val maxB: Int) {
+class Buckets(val maxA: Int, val maxB: Int, val target: Int) {
 
   var step = 0
   var A = 0
@@ -56,8 +56,58 @@ class Buckets(val maxA: Int, val maxB: Int) {
     this
   }
 
+  def right2Left(): Unit = {
+
+
+    printContent()
+
+    do {
+      fullB().printContent()
+      fillB2A().printContent()
+    } while (A != maxA)
+
+    // Keep empty bucket A and move from B to A until B=4
+
+    do {
+      emptyA().printContent()
+      fillB2A().printContent()
+
+      if (B != target) {
+        fullB().printContent()
+        fillB2A().printContent()
+      }
+
+    } while (B != target)
+
+  }
+
+  def left2Right(): Unit = {
+
+
+    printContent()
+
+    // Keep filling bucket A and move to B until A=1
+    do {
+      fullA().printContent()
+      fillA2B().printContent()
+    } while (B != maxB)
+
+    // Keep empty bucket B and move from A to B until B=4
+    do {
+      emptyB().printContent()
+      fillA2B().printContent()
+
+      if (B != target) {
+        fullA().printContent()
+        fillA2B().printContent()
+      }
+
+    } while (B != target)
+
+  }
+
   def printContent(): Unit = {
     println("Step: " + step + "\t\tA = " + A + "\t\tB = " + B + "\t\t")
-    if(step > 8) sys.exit()
   }
+
 }
