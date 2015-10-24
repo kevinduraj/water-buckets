@@ -2,52 +2,60 @@ package kduraj
 
 object Application extends App {
 
-  println("\nWater Buckets - Fill Right to Left")
-  println("----------------------------------")
-  right2Left()
+  val maxA   = 9
+  val maxB   = 12
+  val target = 6
+
+//  println("\nWater Buckets - Fill Right to Left")
+//  println("----------------------------------")
+//  right2Left()
+
   println("\nWater Buckets - Fill Left to Right")
   println("----------------------------------")
   left2Right()
 
   def right2Left(): Unit = {
 
-    val buckets = new Buckets()
+    val rightBucket = new Buckets(maxA, maxB)
 
-    buckets.printContent()
+    rightBucket.printContent()
 
-    buckets.fullB().printContent()
-    buckets.fillB2A().printContent()
+    rightBucket.fullB().printContent()
+    rightBucket.fillB2A().printContent()
 
     // Keep empty bucket A and move from B to A until B=4
     do {
-      buckets.emptyA().printContent()
-      buckets.fillB2A().printContent()
-      buckets.fullB().printContent()
-      buckets.fillB2A().printContent()
+      rightBucket.emptyA().printContent()
+      rightBucket.fillB2A().printContent()
+      rightBucket.fullB().printContent()
+      rightBucket.fillB2A().printContent()
 
-    } while (buckets.B != 4)
+    } while (rightBucket.B != target)
   }
 
   def left2Right(): Unit = {
 
-    val b = new Buckets()
+    val leftBucket = new Buckets(maxA, maxB)
 
-    b.printContent()
+    leftBucket.printContent()
 
     // Keep filling bucket A and move to B until A=1
     do {
-      b.fullA().printContent()
-      b.fillA2B().printContent()
-    } while (b.A != 1)
+      leftBucket.fullA().printContent()
+      leftBucket.fillA2B().printContent()
+    } while (leftBucket.B != maxB)
 
     // Keep empty bucket B and move from A to B until B=4
     do {
-      b.emptyB().printContent()
-      b.fillA2B().printContent()
-      b.fullA().printContent()
-      b.fillA2B().printContent()
+      leftBucket.emptyB().printContent()
+      leftBucket.fillA2B().printContent()
 
-    } while (b.B != 4)
+      if(leftBucket.B != target) {
+        leftBucket.fullA().printContent()
+        leftBucket.fillA2B().printContent()
+      }
+
+    } while (leftBucket.B != target)
 
   }
 

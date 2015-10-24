@@ -1,23 +1,20 @@
 package kduraj
 
-class Buckets {
+class Buckets(val maxA: Int, val maxB: Int) {
 
   var step = 0
-  val maxA = 3
-  val maxB = 5
-
   var A = 0
   var B = 0
 
   def fullA(): Buckets = {
     step += 1
-    A = 3
+    A = maxA
     this
   }
 
   def fullB(): Buckets = {
     step += 1
-    B = 5
+    B = maxB
     this
   }
 
@@ -61,6 +58,6 @@ class Buckets {
 
   def printContent(): Unit = {
     println("Step: " + step + "\t\tA = " + A + "\t\tB = " + B + "\t\t")
-
+    if(step > 8) sys.exit()
   }
 }
